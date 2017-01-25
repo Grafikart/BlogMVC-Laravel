@@ -6,7 +6,7 @@ This is my contribution to BlogMVC.com using Laravel 5.4. I used this project to
 composer install
 php artisan key:generate # Edit your .env
 php artisan migrate
-php artisan db:seed --class=PostTableSeeder # fill the database with some data
+php artisan db:seed # fill the database with some data
 php artisan serve # http://localhost:8000/
 ```
 
