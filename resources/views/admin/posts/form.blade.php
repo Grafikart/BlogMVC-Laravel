@@ -24,7 +24,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group @if($errors->first('category_id')) has-danger @endif">
-                {!! Form::label('category_id', 'Slug') !!}
+                {!! Form::label('category_id', 'Category') !!}
                 {!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'required' => 'required']) !!}
                 @if($errors->first('category_id'))
                     <small class="form-control-feedback">{{ $errors->first('category_id') }}</small>
@@ -33,7 +33,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group @if($errors->first('user_id')) has-danger @endif">
-                {!! Form::label('user_id', 'Slug') !!}
+                {!! Form::label('user_id', 'User') !!}
                 {!! Form::select('user_id', $users, null, ['class' => 'form-control', 'required' => 'required']) !!}
                 @if($errors->first('user_id'))
                     <small class="form-control-feedback">{{ $errors->first('user_id') }}</small>
