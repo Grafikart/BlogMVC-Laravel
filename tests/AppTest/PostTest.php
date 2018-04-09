@@ -1,25 +1,33 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+namespace AppTest;
+
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class PostTest extends TestCase
+/**
+ * Class CategoryTest
+ *
+ * @package AppTest
+ *
+ * @codingStandardsIgnoreFile
+ * @SuppressWarnings(PHPMD.CamelCaseMethodName)
+ * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+ */
+class PostTest extends \TestCase
 {
-
     use DatabaseMigrations;
-    use DatabaseTransactions;
 
+    /**
+     * @param $category
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
+     */
     public function getCategory($category) {
         return \App\Category::find($category->id);
     }
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testCounterCache()
+    /** @test, @group failing */
+    public function it_works()
     {
         $category1 = factory(\App\Category::class)->create();
         $category2 = factory(\App\Category::class)->create();
