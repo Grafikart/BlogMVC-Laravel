@@ -20,13 +20,6 @@ class CreateCategoriesTable extends Migration
             $table->integer('posts_count')->unsigned()->default(0);
             $table->timestamps();
         });
-
-        Schema::table('posts', function (Blueprint $table) {
-            $table->integer('category_id')->unsigned()->default(0);
-            $table->integer('user_id')->unsigned()->default(0);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
-        });
     }
 
     /**
@@ -36,14 +29,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('posts_category_id_foreign');
-            $table->dropForeign('posts_user_id_foreign');
-
-            $table->dropColumn('category_id');
-            $table->dropColumn('user_id');
-        });
-
         Schema::dropIfExists('categories');
     }
 }
