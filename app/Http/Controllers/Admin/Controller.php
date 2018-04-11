@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-class Controller extends \App\Http\Controllers\Controller {
-
+/**
+ * Class Controller
+ *
+ * @package App\Http\Controllers\Admin
+ */
+class Controller extends \App\Http\Controllers\Controller
+{
 }

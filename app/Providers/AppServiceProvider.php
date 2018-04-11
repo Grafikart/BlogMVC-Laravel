@@ -2,12 +2,17 @@
 
 namespace App\Providers;
 
-use App\Observers\PostCountObserver;
 use App\Post;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use cebe\markdown\GithubMarkdown;
+use App\Observers\PostCountObserver;
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
+/**
+ * Class AppServiceProvider
+ *
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,8 +35,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }
+
         $this->app->singleton(GithubMarkdown::class, function ($app) {
-           return new GithubMarkdown();
+            return new GithubMarkdown();
         });
     }
 }

@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class PostRequest
+ *
+ * @package App\Http\Requests
+ */
 class PostRequest extends FormRequest
 {
 
@@ -30,16 +35,19 @@ class PostRequest extends FormRequest
         } else {
             $this['slug'] = str_slug($this->input('slug'));
         }
+
         $rules = [
             'name' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'content' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required|exists:users,id'
+            'user_id' => 'required|exists:users,id',
         ];
+
         if ($post = $this->route('post')) {
             $rules['slug'] .= ',slug,' . $post->id;
         }
+
         return $rules;
     }
 }
