@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "cebe/markdown": "~1.0.1",
-        "laravel/framework": "5.3.*",
+        "laravel/framework": "5.4.*",
         "laravelcollective/html": "^5.3"
     },
     "require-dev": {
@@ -16,7 +16,7 @@
         "doctrine/dbal": "^2.7",
         "fzaninotto/faker": "^1.6",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~5.7",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
