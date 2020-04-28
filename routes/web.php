@@ -28,8 +28,8 @@ Route::get('/{slug}', 'PostController@show')->name('posts.show')->where('slug', 
 Route::get('/category/{slug}', 'PostController@category')->name('posts.category')->where('slug', $slugPattern);
 Route::get('/user/{id}', 'PostController@user')->name('posts.user')->where('id', '[0-9]+');
 
-Route::resource('comments', 'CommentController', ['only' => ['store']]);
+Route::resource('comments', 'CommentController')->only(['store']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
-    Route::resource('posts', 'PostController');
+    Route::resource('posts', 'PostController')->except(['show']);
 });
