@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use App\User;
 
-class PostController extends \App\Http\Controllers\Controller {
-
+class PostController extends Controller
+{
     public function index () {
         $posts = Post::with('category')->paginate(10);
         return view('admin.posts.index', ['posts' => $posts]);
@@ -41,5 +42,4 @@ class PostController extends \App\Http\Controllers\Controller {
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success', 'Post destroyed successfully');
     }
-
 }

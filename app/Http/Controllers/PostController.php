@@ -9,7 +9,6 @@ use App\User;
 
 class PostController extends Controller
 {
-
     private $per_page = 5;
 
     public function index()
@@ -38,5 +37,4 @@ class PostController extends Controller
         $comment = new Comment(['post_id' => $post->id]);
         return view('posts.show', compact('post', 'comment'));
     }
-
 }
