@@ -1,6 +1,6 @@
-## BlogMVC : Laravel 5.4
+## BlogMVC : Laravel 7.0
 
-This is my contribution to BlogMVC.com using Laravel 5.4. I used this project to learn the framework so if you think some patterns are not respected please create an issue :).
+This is my contribution to BlogMVC.com using Laravel 7.0. I used this project to learn the framework so if you think some patterns are not respected please create an issue :).
 
 ```bash
 composer install

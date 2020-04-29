@@ -1,4 +1,4 @@
-<h4>Catégories</h4>
+<h4>Categories</h4>
 <div class="list-group">
     @foreach($categories as $category)
     <a href="{{ route('posts.category', ['slug' => $category->slug]) }}" class="list-group-item justify-content-between">

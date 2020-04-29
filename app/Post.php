@@ -3,58 +3,74 @@
 namespace App;
 
 use App\Facades\Markdown;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-
 
 class Post extends Model
 {
     /**
-     * The database table used by the model.
+     * The "booted" method of the model.
      *
-     * @var string
+     * @return void
      */
-    protected $table = 'posts';
+    protected static function booted()
+    {
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
+    }
 
     /**
-     * The database primary key value.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
-     * Attributes that should be mass-assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'content', 'category_id', 'user_id'];
+    protected $fillable = [
+        'name', 'slug', 'content', 'category_id', 'user_id',
+    ];
 
+    /**
+     * Get the category of the post.
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * Get the author of the post.
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(){
+    /**
+     * Get the comments of the post.
+     */
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function getHtmlAttribute() {
+    /**
+     * Get the markdown parsed content.
+     * 
+     * @return string
+     */
+    public function getHtmlAttribute()
+    {
         return Markdown::parse($this->content);
     }
 
-    public function getExcerpt($max_words = 100, $ending = "...") {
-        $text = strip_tags($this->html);
-        $words = explode(' ', $text);
-        if (count($words) > $max_words) {
-            return implode(' ', array_slice($words, 0, $max_words)) . $ending;
-        }
-        return $text;
+    /**
+     * Get an excerpt of the post content
+     * 
+     * @return string
+     */
+    public function getExcerpt($words = 100, $ending = "...")
+    {
+        return Str::words(strip_tags($this->html), $words, $ending);
     }
-
-
 }

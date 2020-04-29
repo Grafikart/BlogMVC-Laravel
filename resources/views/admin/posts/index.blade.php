@@ -25,7 +25,7 @@
                     <td>{{ $post->category->name }}</td>
                     <td>{{ $post->created_at->format('d/m/Y H:i') }}</td>
                     <td>
-                        <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.posts.edit', ['post' => $post]) }}" class="btn btn-primary">Edit</a>
                         {!! Form::model($post, ['method' => 'DELETE', 'route' => ['admin.posts.destroy', $post], 'style' => 'display:inline;']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}
