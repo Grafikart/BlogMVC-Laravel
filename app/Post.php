@@ -3,11 +3,24 @@
 namespace App;
 
 use App\Facades\Markdown;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *

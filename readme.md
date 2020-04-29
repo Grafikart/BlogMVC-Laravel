@@ -15,8 +15,3 @@ I wrote a test for the counter cache that can be accessed using
 ```php
 ./vendor/bin/phpunit
 ```
-
-## Little TODO for me
-
-- Sort posts
-- Use Route pattern
