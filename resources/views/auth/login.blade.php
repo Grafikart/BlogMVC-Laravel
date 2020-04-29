@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <form class="form-signin" role="form" method="POST" action="{{ url('/login') }}">
+    <form class="form-signin" role="form" method="POST" action="{{ route('login') }}">
 
         <h4 class="form-signin-heading">Please sign in</h4>
         {{ csrf_field() }}

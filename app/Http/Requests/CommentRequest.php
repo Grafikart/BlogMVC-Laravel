@@ -27,7 +27,7 @@ class CommentRequest extends FormRequest
             'username' => 'required|min:2',
             'email' => 'required|email',
             'content' => 'required|min:10',
-            'post_id' => 'required|exists:posts,id'
+            'post_id' => 'required|exists:posts,id',
         ];
     }
 }
